@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${version}",
+  "name": "${mod_name}",
+  "description": "Gives chunk mesh building its own dedicated, tunable thread pool instead of sharing vanilla's background pool with worldgen and IO. Configure via /multicoremagic or the Mod Menu config screen.",
+  "authors": ["the-real-ltcg"],
+  "contact": {},
+  "license": "${mod_license}",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["com.ltcg.multicoremagic.MulticoreMagic"],
+    "modmenu": ["com.ltcg.multicoremagic.MulticoreMagicModMenu"]
+  },
+  "mixins": [
+    "multicoremagic.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": ">=${minecraft_version}"
+  }
+}
