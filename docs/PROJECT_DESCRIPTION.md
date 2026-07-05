@@ -38,7 +38,14 @@ The default thread count matches vanilla's own formula (CPU cores − 1). The sl
 
 ## NeoForge support
 
-The same jar also runs on NeoForge via [Launchpad](https://github.com/Sinytra/Launchpad), which loads Fabric-format mods directly with no separate build. You'll need Launchpad and Forgified Fabric API installed in place of regular Fabric API; the Mod Menu screen isn't available there (Mod Menu is Fabric-only), but all `/multicoremagic` commands work the same. Note: Launchpad currently only supports Minecraft 26.1.2, so this isn't usable on NeoForge 26.2 until Launchpad releases a matching build.
+**Does NOT work on NeoForge yet.** This mod ships metadata to run on NeoForge via [Launchpad](https://github.com/Sinytra/Launchpad), but Launchpad itself currently only has builds for Minecraft 26.1.2 — there is no 26.2 release upstream. Since this mod targets 26.2, it cannot actually be loaded on NeoForge right now, regardless of what you install. This is not a bug in this mod; it's waiting on Launchpad to add 26.2 support.
+
+Once Launchpad releases a 26.2 build, NeoForge users will need:
+
+- [Launchpad](https://github.com/Sinytra/Launchpad) (loads this Fabric jar directly, no separate build)
+- [Forgified Fabric API](https://github.com/Sinytra/ForgifiedFabricAPI) in place of regular Fabric API
+
+The Mod Menu config screen will still not be available on NeoForge (Mod Menu is Fabric-only), but all `/multicoremagic` commands will work the same. Check [Launchpad's releases](https://github.com/Sinytra/Launchpad/releases) for current status before attempting this.
 
 ## License
 
