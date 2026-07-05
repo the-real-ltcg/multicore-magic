@@ -36,6 +36,10 @@ The default thread count matches vanilla's own formula (CPU cores − 1). The sl
 - Fabric API
 - Java 25
 
+## NeoForge support
+
+The same jar also runs on NeoForge via [Launchpad](https://github.com/Sinytra/Launchpad), which loads Fabric-format mods directly with no separate build. You'll need Launchpad and Forgified Fabric API installed in place of regular Fabric API; the Mod Menu screen isn't available there (Mod Menu is Fabric-only), but all `/multicoremagic` commands work the same. Note: Launchpad currently only supports Minecraft 26.1.2, so this isn't usable on NeoForge 26.2 until Launchpad releases a matching build.
+
 ## License
 
 MIT — source on [GitHub](https://github.com/the-real-ltcg/multicore-magic).

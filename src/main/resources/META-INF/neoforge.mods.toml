@@ -1,0 +1,36 @@
+license="${mod_license}"
+
+[[mods]]
+modId="${mod_id}"
+version="${version}"
+displayName="${mod_name}"
+description='''
+Gives chunk mesh building its own dedicated, tunable thread pool instead of sharing vanilla's
+background pool with worldgen and IO. Runs on NeoForge via Launchpad. Configure via
+/multicoremagic (the Mod Menu config screen is Fabric-only and not available here).
+'''
+authors="the-real-ltcg"
+
+[properties]
+"launchpad:placeholder"=true
+
+[[dependencies.${mod_id}]]
+    modId="neoforge"
+    type="required"
+    versionRange="${neoforge_version_range}"
+    ordering="NONE"
+    side="CLIENT"
+
+[[dependencies.${mod_id}]]
+    modId="minecraft"
+    type="required"
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="CLIENT"
+
+[[dependencies.${mod_id}]]
+    modId="launchpad"
+    type="required"
+    versionRange="[0,)"
+    ordering="NONE"
+    side="CLIENT"

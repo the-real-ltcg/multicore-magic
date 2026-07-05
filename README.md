@@ -59,6 +59,26 @@ through new terrain — dial it back if you notice stutter after raising it.
 - Fabric API
 - Java `25`
 
+## NeoForge
+
+This mod's Fabric jar also runs unmodified on NeoForge via
+[Launchpad](https://github.com/Sinytra/Launchpad), which loads Fabric-format mods directly from
+their `fabric.mod.json` metadata (this mod opts in via `"launchpad:compatible": true` — no code
+changes needed). On NeoForge you'll additionally need:
+
+- [Launchpad](https://github.com/Sinytra/Launchpad)
+- [Forgified Fabric API](https://github.com/Sinytra/ForgifiedFabricAPI) (in place of regular
+  Fabric API)
+
+The Mod Menu config screen isn't available on NeoForge (Mod Menu itself is Fabric-only) — use the
+`/multicoremagic` commands there instead.
+
+> [!IMPORTANT]
+> As of this release, **Launchpad only has builds for Minecraft 26.1.2, not 26.2** — there's no
+> 26.2 release yet upstream. This mod is ready for it the moment Launchpad catches up, but it
+> can't actually be loaded on NeoForge 26.2 today. Check
+> [Launchpad's releases](https://github.com/Sinytra/Launchpad/releases) for current status.
+
 ## Building
 
 ```sh

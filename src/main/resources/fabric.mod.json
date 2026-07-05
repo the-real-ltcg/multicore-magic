@@ -20,5 +20,8 @@
     "fabricloader": ">=${loader_version}",
     "fabric-api": "*",
     "minecraft": ">=${minecraft_version}"
+  },
+  "custom": {
+    "launchpad:compatible": true
   }
 }
