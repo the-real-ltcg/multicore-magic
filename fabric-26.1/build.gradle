@@ -6,7 +6,7 @@ version = project.mod_version
 group = project.maven_group
 
 base {
-	archivesName = project.archives_base_name
+	archivesName = "${project.archives_base_name}-fabric-26.1"
 }
 
 repositories {
@@ -22,16 +22,27 @@ loom {
 	}
 }
 
+sourceSets {
+	main {
+		java {
+			srcDir rootProject.file("fabric/src/main/java")
+		}
+		resources {
+			srcDir rootProject.file("fabric/src/main/resources")
+		}
+	}
+}
+
 dependencies {
 	// New (non-remapping) Loom for 26.x, so mod deps use standard configurations, not modImplementation.
-	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	minecraft "com.mojang:minecraft:${project.mc261_minecraft_version}"
 	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
-	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	implementation "net.fabricmc.fabric-api:fabric-api:${project.mc261_fabric_version}"
 
-	api("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
+	api("me.shedaniel.cloth:cloth-config-fabric:${project.mc261_cloth_config_version}") {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
-	api "com.terraformersmc:modmenu:${project.modmenu_version}"
+	api "com.terraformersmc:modmenu:${project.mc261_modmenu_version}"
 }
 
 processResources {
@@ -40,9 +51,9 @@ processResources {
 	inputs.property "mod_name", project.mod_name
 	inputs.property "mod_license", project.mod_license
 	inputs.property "loader_version", project.loader_version
-	inputs.property "minecraft_version", project.minecraft_version
-	inputs.property "minecraft_version_range", project.minecraft_version_range
-	inputs.property "neoforge_version_range", "[26.2,)"
+	inputs.property "minecraft_version", project.mc261_minecraft_version
+	inputs.property "minecraft_version_range", project.mc261_minecraft_version_range
+	inputs.property "neoforge_version_range", "[26.1,)"
 
 	filesMatching("fabric.mod.json") {
 		expand(
@@ -58,6 +69,8 @@ processResources {
 	// NeoForge placeholder: without Launchpad installed, this makes NeoForge show a clear "missing
 	// dependency: launchpad" error instead of "invalid mod". With Launchpad installed, this file is
 	// ignored entirely in favor of fabric.mod.json above (Launchpad's own opt-in mechanism).
+	// Launchpad + Forgified Fabric API DO have 26.1.2 builds, unlike 26.2, so this variant is the
+	// one that's actually usable on NeoForge today.
 	filesMatching("META-INF/neoforge.mods.toml") {
 		expand(
 			"version": inputs.properties.version,

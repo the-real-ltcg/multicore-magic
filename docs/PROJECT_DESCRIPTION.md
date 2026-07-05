@@ -31,21 +31,24 @@ The default thread count matches vanilla's own formula (CPU cores − 1). The sl
 
 ## Requirements
 
-- Minecraft 26.2
-- Fabric Loader 0.18.4 or newer
-- Fabric API
-- Java 25
+Two Fabric builds are published, one per supported Minecraft version:
+
+- `multicore-magic-fabric-26.2-*.jar` — Minecraft 26.2, Fabric Loader 0.18.4+, Fabric API, Java 25
+- `multicore-magic-fabric-26.1-*.jar` — Minecraft 26.1.2, Fabric Loader 0.18.4+, Fabric API, Java 25
 
 ## NeoForge support
 
-**Does NOT work on NeoForge yet.** This mod ships metadata to run on NeoForge via [Launchpad](https://github.com/Sinytra/Launchpad), but Launchpad itself currently only has builds for Minecraft 26.1.2 — there is no 26.2 release upstream. Since this mod targets 26.2, it cannot actually be loaded on NeoForge right now, regardless of what you install. This is not a bug in this mod; it's waiting on Launchpad to add 26.2 support.
+**Works on NeoForge 26.1.2. Does NOT work on NeoForge 26.2 yet.** This mod ships metadata to run on NeoForge via [Launchpad](https://github.com/Sinytra/Launchpad), but Launchpad itself currently only has builds for Minecraft 26.1.2 — there is no 26.2 release upstream yet. So:
 
-Once Launchpad releases a 26.2 build, NeoForge users will need:
+- On NeoForge **26.1.2**: install the `fabric-26.1` jar above with Launchpad and it works today.
+- On NeoForge **26.2**: not possible right now regardless of what you install, since Launchpad hasn't released a 26.2 build. This is not a bug in this mod; it's waiting on Launchpad.
 
-- [Launchpad](https://github.com/Sinytra/Launchpad) (loads this Fabric jar directly, no separate build)
+To run this on NeoForge 26.1.2, you'll need:
+
+- [Launchpad](https://github.com/Sinytra/Launchpad) (loads the `fabric-26.1` jar directly, no separate build)
 - [Forgified Fabric API](https://github.com/Sinytra/ForgifiedFabricAPI) in place of regular Fabric API
 
-The Mod Menu config screen will still not be available on NeoForge (Mod Menu is Fabric-only), but all `/multicoremagic` commands will work the same. Check [Launchpad's releases](https://github.com/Sinytra/Launchpad/releases) for current status before attempting this.
+The Mod Menu config screen is not available on NeoForge (Mod Menu is Fabric-only), but all `/multicoremagic` commands work the same. Check [Launchpad's releases](https://github.com/Sinytra/Launchpad/releases) for current status before attempting the 26.2 jar on NeoForge.
 
 ## License
 

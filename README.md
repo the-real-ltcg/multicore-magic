@@ -1,6 +1,6 @@
 # Multicore Magic
 
-![Minecraft](https://img.shields.io/badge/Minecraft-26.2-4E7A31?logo=minecraft&logoColor=white)
+![Minecraft](https://img.shields.io/badge/Minecraft-26.2%20%7C%2026.1.2-4E7A31?logo=minecraft&logoColor=white)
 ![Fabric](https://img.shields.io/badge/Loader-Fabric-1976D2?logo=fabric&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
@@ -54,36 +54,42 @@ through new terrain — dial it back if you notice stutter after raising it.
 
 ## Requirements
 
-- Minecraft `26.2`
-- Fabric Loader `>= 0.18.4`
-- Fabric API
-- Java `25`
+Two Fabric builds are published, one per supported Minecraft version:
+
+| Jar | Minecraft | Fabric Loader | Fabric API | Java |
+|---|---|---|---|---|
+| `multicore-magic-fabric-26.2-*.jar` | `26.2` | `>= 0.18.4` | any 26.2 build | `25` |
+| `multicore-magic-fabric-26.1-*.jar` | `26.1.2` | `>= 0.18.4` | any 26.1.2 build | `25` |
+
+The two versions renamed the internal method this mod hooks into (`allChanged()` on 26.1.2 →
+`invalidateCompiledGeometry(...)` on 26.2), so each jar ships its own small version-specific mixin
+— everything else is identical between the two.
 
 ## NeoForge
 
-This mod's Fabric jar also runs unmodified on NeoForge via
+Both Fabric jars also run unmodified on NeoForge via
 [Launchpad](https://github.com/Sinytra/Launchpad), which loads Fabric-format mods directly from
 their `fabric.mod.json` metadata (this mod opts in via `"launchpad:compatible": true` — no code
-changes needed). On NeoForge you'll additionally need:
-
-- [Launchpad](https://github.com/Sinytra/Launchpad)
-- [Forgified Fabric API](https://github.com/Sinytra/ForgifiedFabricAPI) (in place of regular
-  Fabric API)
-
-The Mod Menu config screen isn't available on NeoForge (Mod Menu itself is Fabric-only) — use the
-`/multicoremagic` commands there instead.
+changes needed). On NeoForge you'll additionally need
+[Forgified Fabric API](https://github.com/Sinytra/ForgifiedFabricAPI) in place of regular Fabric
+API. The Mod Menu config screen isn't available on NeoForge (Mod Menu itself is Fabric-only) — use
+the `/multicoremagic` commands there instead.
 
 > [!IMPORTANT]
-> As of this release, **Launchpad only has builds for Minecraft 26.1.2, not 26.2** — there's no
-> 26.2 release yet upstream. This mod is ready for it the moment Launchpad catches up, but it
-> can't actually be loaded on NeoForge 26.2 today. Check
-> [Launchpad's releases](https://github.com/Sinytra/Launchpad/releases) for current status.
+> **Launchpad currently only has builds for Minecraft 26.1.2, not 26.2.** Use the
+> `fabric-26.1` jar with Launchpad + Forgified Fabric API on NeoForge `26.1.2`. The `fabric-26.2`
+> jar is ready for NeoForge the moment Launchpad releases a 26.2 build, but can't be loaded on
+> NeoForge today. Check [Launchpad's releases](https://github.com/Sinytra/Launchpad/releases) for
+> current status.
 
 ## Building
 
 ```sh
 JAVA_HOME=<path to JDK 25> ./gradlew build
 ```
+
+Builds both `fabric-26.2` and `fabric-26.1` jars into their respective `build/libs/` folders. To
+build just one: `./gradlew :fabric-26.2:build` or `./gradlew :fabric-26.1:build`.
 
 ## License
 
